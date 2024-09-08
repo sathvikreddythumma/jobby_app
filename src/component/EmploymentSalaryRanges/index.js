@@ -50,13 +50,20 @@ const EmploymentSalaryRanges = props => {
         {employmentTypesList.map(e => {
           const {activeEmpId, setEmpId} = props
 
-          const ec = () => {
+          const ec = event => {
             setEmpId(e.employmentTypeId)
           }
           return (
-            <li className="list-bg" key={e.employmentTypeId}>
-              <input type="checkbox" className="box" onClick={ec} />
-              <p className="li-p">{e.label}</p>
+            <li className="list-bg1" key={e.employmentTypeId}>
+              <input
+                type="checkbox"
+                className="box"
+                onClick={ec}
+                value={e.employmentTypeId}
+              />
+              <label htmlFor={e.employmentTypeId} className="li-p">
+                {e.label}
+              </label>
             </li>
           )
         })}
@@ -74,9 +81,18 @@ const EmploymentSalaryRanges = props => {
           }
 
           return (
-            <li className="list-bg" key={e.salaryRangeId}>
-              <input type="checkbox" className="box" onClick={rc} />
-              <p className="li-p">{e.label}</p>
+            <li className="list-bg1" key={e.salaryRangeId}>
+              <input
+                type="radio"
+                id={e.salaryRangeId}
+                className="box"
+                name="opt"
+                onClick={rc}
+              />
+
+              <label htmlFor={e.salaryRangeId} className="li-p">
+                {e.label}
+              </label>
             </li>
           )
         })}

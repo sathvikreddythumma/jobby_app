@@ -1,13 +1,22 @@
 import './index.css'
 import Loader from 'react-loader-spinner'
-import {BsSearch} from 'react-icons/bs'
+import {BsSearch, BsBriefcaseFill} from 'react-icons/bs'
 import {FaStar} from 'react-icons/fa'
+import {MdLocationOn} from 'react-icons/md'
+import {Link} from 'react-router-dom'
 import {Component} from 'react'
 import Cookies from 'js-cookie'
 import Header from '../Header'
 import EmploymentSalaryRanges from '../EmploymentSalaryRanges'
 
-const apiStatus = {
+const apiStatus1 = {
+  initial: 'INITIAL',
+  success: 'SUCCESS',
+  failure: 'FAILURE',
+  progress: 'IN_PROGRESS',
+}
+
+const apiStatus2 = {
   initial: 'INITIAL',
   success: 'SUCCESS',
   failure: 'FAILURE',
@@ -16,12 +25,12 @@ const apiStatus = {
 
 class Jobs extends Component {
   state = {
-    apiState: apiStatus.initial,
+    apiState1: apiStatus1.initial,
+    apiState2: apiStatus2.initial,
     proDetList: {},
     rolesList: {},
     activeSalaryId: '',
     activeEmpId: '',
-    empType: '',
     pak: '',
     searchInput: '',
     ee: [],
@@ -32,10 +41,49 @@ class Jobs extends Component {
     this.roleDetails()
   }
 
+  profileDetails = async () => {
+    this.setState({
+      apiState1: apiStatus1.progress,
+    })
+    const profileUrl = 'https://apis.ccbp.in/profile'
+    const t = Cookies.get('jwt_token')
+    const proOptions = {
+      headers: {
+        Authorization: `Bearer ${t}`,
+      },
+      method: 'GET',
+    }
+    const proResponse = await fetch(profileUrl, proOptions)
+    if (proResponse.ok) {
+      const proData = await proResponse.json()
+      const oldPro = proData.profile_details
+      const newPro = {
+        name: oldPro.name,
+        profileImageUrl: oldPro.profile_image_url,
+        shortBio: oldPro.short_bio,
+      }
+      this.profileSuccess(newPro)
+    } else {
+      this.profileFailure()
+    }
+  }
+
+  profileFailure = () => {
+    this.setState({apiState1: apiStatus1.failure})
+  }
+
+  profileSuccess = proDet => {
+    this.setState({apiState1: apiStatus1.success, proDetList: proDet})
+  }
+
   roleDetails = async () => {
-    const {empType, pak, searchInput, activeSalaryId, activeEmpId} = this.state
-    this.setState({apiState: apiStatus.progress})
-    const roleUrl = `https://apis.ccbp.in/jobs?employment_type=${empType}&minimum_package=${activeSalaryId}&search=`
+    const {pak, searchInput, activeSalaryId, activeEmpId, ee} = this.state
+    console.log(ee)
+    this.setState({
+      apiState2: apiStatus2.progress,
+    })
+    const roleUrl = `https://apis.ccbp.in/jobs?employment_type=${ee}&minimum_package=${activeSalaryId}&search=${searchInput}`
+    console.log(roleUrl)
     const rt = Cookies.get('jwt_token')
     const roleOptions = {
       method: 'GET',
@@ -59,45 +107,24 @@ class Jobs extends Component {
         title: e.title,
       }))
       console.log(nRl)
+
       this.rolesSuccess(nRl)
+    } else {
+      this.roleFailure()
     }
+  }
+
+  roleFailure = () => {
+    this.setState({
+      apiState2: apiStatus2.failure,
+    })
   }
 
   rolesSuccess = nRl => {
-    this.setState({apiState: apiStatus.success, rolesList: nRl})
-  }
-
-  profileDetails = async () => {
-    this.setState({apiState: apiStatus.progress})
-    const profileUrl = 'https://apis.ccbp.in/profile'
-    const t = Cookies.get('jwt_token')
-    const proOptions = {
-      method: 'GET',
-      headers: {
-        authorization: `Bearer ${t}`,
-      },
-    }
-    const proResponse = await fetch(profileUrl, proOptions)
-    if (proResponse.ok) {
-      const proData = await proResponse.json()
-      const oldPro = proData.profile_details
-      const newPro = {
-        name: oldPro.name,
-        profileImageUrl: oldPro.profile_image_url,
-        shortBio: oldPro.short_bio,
-      }
-      this.profileSuccess(newPro)
-    } else {
-      this.profileFailure()
-    }
-  }
-
-  profileFailure = () => {
-    this.setState({apiState: apiStatus.failure})
-  }
-
-  profileSuccess = proDet => {
-    this.setState({apiState: apiStatus.success, proDetList: proDet})
+    this.setState({
+      apiState2: apiStatus2.success,
+      rolesList: nRl,
+    })
   }
 
   renderProfile = () => {
@@ -130,26 +157,39 @@ class Jobs extends Component {
   )
 
   setEmpId = empId => {
-    const {empType, ee} = this.state
-    ee.push(empId)
-    const con = `${empId},`
-    const newEmp = empType + con
-    const n = ee.join(',')
-    this.setState({activeEmpId: empId, empType: n}, this.roleDetails)
+    const {ee} = this.state
+
+    const notInList = ee.filter(e => e === empId)
+    if (notInList.length === 0) {
+      this.setState(prev => ({ee: [...prev.ee, empId]}), this.roleDetails)
+    } else {
+      const filteredData = ee.filter(e => e !== empId)
+      this.setState(prev => ({ee: filteredData}), this.roleDetails)
+    }
   }
 
   checkFun = sId => {
+    console.log(sId)
     this.setState({activeSalaryId: sId}, this.roleDetails)
   }
 
+  searchBtn = event => {
+    console.log(event.key)
+    this.setState({searchInput: event.target.value})
+  }
+
+  getDet = event => {
+    this.roleDetails()
+  }
+
   renderProfileList() {
-    const {apiState} = this.state
-    switch (apiState) {
-      case apiStatus.success:
+    const {apiState1} = this.state
+    switch (apiState1) {
+      case apiStatus1.success:
         return this.renderProfile()
-      case apiStatus.failure:
+      case apiStatus1.failure:
         return this.renderProfileFailure()
-      case apiStatus.progress:
+      case apiStatus1.progress:
         return this.renderLoader()
 
       default:
@@ -159,43 +199,81 @@ class Jobs extends Component {
 
   renderRoleSuccess = () => {
     const {rolesList} = this.state
-    return (
+    const len = rolesList.length === 0
+    return len ? (
+      <div className="notFound-bg">
+        <img
+          src="https://assets.ccbp.in/frontend/react-js/no-jobs-img.png"
+          alt="no jobs"
+          className="not-img"
+        />
+        <h1 className="not-h">No Jobs Found</h1>
+        <p className="not-p">We could not find any jobs. Try others filters</p>
+      </div>
+    ) : (
       <ul className="roles-ul-bg">
-        <li className="role-li-bg">
-          <div className="role-head-bg">
-            <img
-              src={rolesList[0].companyLogoUrl}
-              alt="company logo"
-              className="com-img"
-            />
+        {rolesList.map(e => (
+          <Link to={`/jobs/${e.id}`} className="link-bg">
+            <li className="role-li-bg" key={e.id}>
+              <div className="role-head-bg">
+                <img
+                  src={e.companyLogoUrl}
+                  alt="company logo"
+                  className="com-img"
+                />
 
-            <div className="head-bg">
-              <div className="heading-bg">
-                <h1 className="role-heading">{rolesList[0].title}</h1>
+                <div className="head-bg">
+                  <div className="heading-bg">
+                    <h1 className="role-heading">{e.title}</h1>
+                  </div>
+                  <div className="star-bg">
+                    <FaStar className="star-icon" />
+                    <p className="rev-p">{e.rating}</p>
+                  </div>
+                </div>
               </div>
-              <div className="star-bg">
-                <FaStar className="star-icon" />
-                <p className="rev-p">{rolesList[0].rating}</p>
-              </div>
-            </div>
-          </div>
 
-          <div className="loc-sal-bg">
-            <div className="loc-bg">hi</div>
-          </div>
-        </li>
+              <div className="loc-sal-bg">
+                <div className="ls-bg2">
+                  <div className="loc-bg">
+                    <div className="i-bg">
+                      <MdLocationOn className="loc-icon" />
+                    </div>
+                    <p className="loc-p">{e.location}</p>
+                  </div>
+                  <div className="loc-bg">
+                    <div className="i-bg">
+                      <BsBriefcaseFill className="loc-icon" />
+                    </div>
+                    <p className="loc-p">{e.employmentType}</p>
+                  </div>
+                </div>
+                <p className="pak-p">{e.packagePerAnnum}</p>
+              </div>
+              <div className="hr-bg">
+                <hr />
+              </div>
+              <div className="des-bg">
+                <h1 className="pak-p">Description</h1>
+                <p className="des-p">{e.jobDescription}</p>
+              </div>
+            </li>
+          </Link>
+        ))}
       </ul>
     )
   }
 
+  renderRoleFailure = () => {}
+
   renderRoles() {
-    const {apiState} = this.state
-    switch (apiState) {
-      case apiStatus.success:
+    const {apiState2} = this.state
+    switch (apiState2) {
+      case apiStatus2.success:
         return this.renderRoleSuccess()
-      case apiStatus.failure:
+      case apiStatus2.failure:
         return this.renderRoleFailure()
-      case apiStatus.progress:
+      case apiStatus2.progress:
         return this.renderLoader()
       default:
         return null
@@ -203,7 +281,7 @@ class Jobs extends Component {
   }
 
   render() {
-    const {proDetList, activeSalaryId, activeEmpId, rolesList} = this.state
+    const {activeSalaryId, activeEmpId, searchInput} = this.state
 
     return (
       <>
@@ -221,12 +299,18 @@ class Jobs extends Component {
 
           <div className="roles-search-bg">
             <div className="search-bg">
-              <input type="search" className="searchInp" placeholder="Search" />
-
+              <input
+                type="search"
+                className="searchInp"
+                value={searchInput}
+                placeholder="Search"
+                onChange={this.searchBtn}
+              />
               <button
                 type="button"
                 data-testid="searchButton"
                 className="icon-bg"
+                onClick={this.getDet}
               >
                 {' '}
                 <BsSearch className="search-icon" />
