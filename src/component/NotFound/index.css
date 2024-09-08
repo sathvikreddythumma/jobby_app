@@ -1,0 +1,17 @@
+.not-bg {
+  background-color: #000000;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto';
+}
+.not-h {
+  color: #ffffff;
+  font-size: 40px;
+}
+.not-p {
+  color: #ffffff;
+  font-size: 20px;
+}
