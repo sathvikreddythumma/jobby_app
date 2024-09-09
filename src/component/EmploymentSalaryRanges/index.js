@@ -46,7 +46,7 @@ const EmploymentSalaryRanges = props => {
         <hr />
       </div>
       <ul className="ul-bg">
-        <p className="type-emp">Type of Employment</p>
+        <h1 className="type-emp">Type of Employment</h1>
         {employmentTypesList.map(e => {
           const {activeEmpId, setEmpId} = props
 
@@ -57,6 +57,7 @@ const EmploymentSalaryRanges = props => {
             <li className="list-bg1" key={e.employmentTypeId}>
               <input
                 type="checkbox"
+                id={e.employmentTypeId}
                 className="box"
                 onClick={ec}
                 value={e.employmentTypeId}
@@ -72,7 +73,7 @@ const EmploymentSalaryRanges = props => {
         <hr />
       </div>
       <ul className="ul-bg">
-        <p className="type-emp">Salary Range</p>
+        <h1 className="type-emp">Salary Range</h1>
         {salaryRangesList.map(e => {
           const {activeSalaryId, checkFun} = props
 

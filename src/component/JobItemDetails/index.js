@@ -113,7 +113,7 @@ class JobItemDetails extends Component {
           <div className="role-head-bg1">
             <img
               src={itemDet.companyLogoUrl}
-              alt="company logo"
+              alt="job details company logo"
               className="com-img1"
             />
 
@@ -192,7 +192,7 @@ class JobItemDetails extends Component {
               <div className="role-head-bg1">
                 <img
                   src={e.companyLogoUrl}
-                  alt="company logo"
+                  alt="similar job company logo"
                   className="com-img12"
                 />
 
@@ -231,7 +231,22 @@ class JobItemDetails extends Component {
     )
   }
 
-  renderItemFailure = () => {}
+  renderItemFailure = () => (
+    <div className="fail-bg">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
+        alt="failure view"
+        className="fail-img"
+      />
+      <h1 className="fail-h">Oops! Something Went Wrong</h1>
+      <p className="fail-p">
+        We cannot seem to find the page you are looking for.
+      </p>
+      <button type="button" className="pro-fail-btn" onClick={this.getItemDet}>
+        Retry
+      </button>
+    </div>
+  )
 
   renderItem = () => {
     const {api} = this.state

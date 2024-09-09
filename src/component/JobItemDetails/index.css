@@ -331,3 +331,25 @@
 .wid1 {
   width: auto;
 }
+.fail-bg {
+  margin-top: 10px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Roboto';
+}
+.fail-img {
+  height: 70%;
+  width: 90%;
+}
+.fail-h {
+  color: #ffffff;
+  font-size: 35px;
+}
+.fail-p {
+  color: #f8fafc;
+  font-size: 15px;
+  font-weight: 400;
+}

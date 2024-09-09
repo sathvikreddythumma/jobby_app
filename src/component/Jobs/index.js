@@ -178,6 +178,12 @@ class Jobs extends Component {
     this.setState({searchInput: event.target.value})
   }
 
+  inpClick = event => {
+    if (event.key === 'Enter') {
+      this.roleDetails()
+    }
+  }
+
   getDet = event => {
     this.roleDetails()
   }
@@ -208,7 +214,7 @@ class Jobs extends Component {
           className="not-img"
         />
         <h1 className="not-h">No Jobs Found</h1>
-        <p className="not-p">We could not find any jobs. Try others filters</p>
+        <p className="not-p">We could not find any jobs. Try other filters</p>
       </div>
     ) : (
       <ul className="roles-ul-bg">
@@ -264,7 +270,22 @@ class Jobs extends Component {
     )
   }
 
-  renderRoleFailure = () => {}
+  renderRoleFailure = () => (
+    <div className="fail-bg">
+      <img
+        src="https://assets.ccbp.in/frontend/react-js/failure-img.png"
+        alt="failure view"
+        className="fail-img"
+      />
+      <h1 className="fail-h">Oops! Something Went Wrong</h1>
+      <p className="fail-p">
+        We cannot seem to find the page you are looking for.
+      </p>
+      <button type="button" className="pro-fail-btn" onClick={this.roleDetails}>
+        Retry
+      </button>
+    </div>
+  )
 
   renderRoles() {
     const {apiState2} = this.state
@@ -305,6 +326,7 @@ class Jobs extends Component {
                 value={searchInput}
                 placeholder="Search"
                 onChange={this.searchBtn}
+                onKeyDown={this.inpClick}
               />
               <button
                 type="button"

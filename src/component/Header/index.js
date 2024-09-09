@@ -1,5 +1,8 @@
 import './index.css'
 import Cookies from 'js-cookie'
+import {FiLogOut} from 'react-icons/fi'
+import {BsBriefcaseFill} from 'react-icons/bs'
+import {MdHome} from 'react-icons/md'
 import {withRouter, Link} from 'react-router-dom'
 
 const Header = props => {
@@ -19,14 +22,19 @@ const Header = props => {
             className="nav-img"
           />
         </Link>
-        <div className="home-job-bg">
+        <ul className="home-job-bg">
           <Link to="/" className="link">
-            <p className="home-p">Home</p>
+            <li className="home-p">Home</li>
+            <MdHome className="mb-home-img" />
           </Link>
           <Link to="/jobs" className="link">
-            <p className="home-p">Jobs</p>
+            <li className="home-p">Jobs</li>
+            <BsBriefcaseFill className="mb-home-img" />
           </Link>
-        </div>
+          <li>
+            <FiLogOut className="log-img" />
+          </li>
+        </ul>
         <button type="button" className="out-btn" onClick={logout}>
           Logout
         </button>
