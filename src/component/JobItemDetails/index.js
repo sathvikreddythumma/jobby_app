@@ -189,16 +189,16 @@ class JobItemDetails extends Component {
         <ul className="simJobs-ul-bg">
           {similarProducts.map(e => (
             <li className="simJobs-li" key={e.id}>
-              <div className="role-head-bg1">
+              <div className="sim-role-head-bg1">
                 <img
                   src={e.companyLogoUrl}
                   alt="similar job company logo"
-                  className="com-img12"
+                  className="sim-com-img12"
                 />
 
-                <div className="head-bg1">
-                  <div className="heading-bg1">
-                    <h1 className="role-heading12">{e.title}</h1>
+                <div className="sim-head-bg1">
+                  <div className="sim-heading-bg1">
+                    <h1 className="sim-role-heading12">{e.title}</h1>
                   </div>
                   <div className="star-bg12">
                     <FaStar className="star-icon12" />
@@ -210,15 +210,15 @@ class JobItemDetails extends Component {
                 <h1 className="simPro-h">Description</h1>
                 <p className="simPro-p">{e.jobDescription}</p>
               </div>
-              <div className="ls-bg21 wid">
-                <div className="loc-bg1 wid1">
-                  <div className="i-bg1">
+              <div className="sim-loc-work-bg">
+                <div className="sim-loc-bg">
+                  <div className="sim-loc">
                     <MdLocationOn className="loc-icon1" />
                   </div>
                   <p className="loc-p1">{e.location}</p>
                 </div>
-                <div className="loc-bg1 wid1">
-                  <div className="i-bg1">
+                <div className="sim-loc-bg">
+                  <div className="sim-loc">
                     <BsBriefcaseFill className="loc-icon1" />
                   </div>
                   <p className="loc-p1">{e.employmentType}</p>

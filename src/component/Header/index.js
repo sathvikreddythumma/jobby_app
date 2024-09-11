@@ -31,7 +31,7 @@ const Header = props => {
             <li className="home-p">Jobs</li>
             <BsBriefcaseFill className="mb-home-img" />
           </Link>
-          <li>
+          <li onClick={logout}>
             <FiLogOut className="log-img" />
           </li>
         </ul>

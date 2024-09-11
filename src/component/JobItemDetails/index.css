@@ -279,7 +279,7 @@
   margin-right: 30px;
   margin-bottom: 30px;
   padding: 30px;
-  height: 530px;
+  height: auto;
   width: 30%;
   border-radius: 15px;
 }
@@ -296,13 +296,45 @@
 .simPro-bg1 {
   margin-top: 50px;
 }
-.role-heading12 {
+.sim-role-head-bg1 {
+  width: auto;
+  height: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: flex-start;
+  line-height: 0.5;
+}
+.com-img1 {
+  height: 58px;
+  width: 50px;
+  align-self: center;
+  margin-top: 4px;
+}
+.sim-head-bg1 {
+  width: auto;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  margin-left: 20px;
+}
+.sim-heading-bg1 {
+  width: 100%;
+  height: 35px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.sim-role-heading12 {
   color: #ffffff;
-  font-size: 25px;
+  font-size: 20px;
   font-weight: 600;
 }
-.com-img12 {
-  height: 63px;
+.sim-com-img12 {
+  height: 65px;
   width: 58px;
   align-self: center;
   margin-top: 15px;
@@ -331,6 +363,27 @@
 .wid1 {
   width: auto;
 }
+.sim-loc-work-bg {
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.sim-loc-bg {
+  margin-right: 20px;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+.sim-loc {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 .fail-bg {
   margin-top: 10px;
   height: 100vh;
@@ -352,4 +405,364 @@
   color: #f8fafc;
   font-size: 15px;
   font-weight: 400;
+}
+.fail-bg2 {
+}
+@media screen and (max-width: 767px) {
+  .item-bg {
+    background-color: #000000;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-family: 'Roboto';
+  }
+
+  .loader-container1 {
+    height: 100vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .roles-ul-bg1 {
+    margin-top: 30px;
+    width: 85%;
+    margin-left: 0px;
+    padding-left: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .role-li-bg1 {
+    margin-top: 20px;
+    width: 100%;
+    height: auto;
+    background-color: #272727;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 25px;
+  }
+  .role-head-bg1 {
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    line-height: 0.5;
+  }
+  .com-img1 {
+    height: 58px;
+    width: 50px;
+    align-self: center;
+    margin-top: 4px;
+  }
+  .head-bg1 {
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: 20px;
+  }
+  .heading-bg1 {
+    height: 35px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  .role-heading1 {
+    color: #f8fafc;
+    font-size: 20px;
+  }
+  .star-bg1 {
+    height: 30px;
+    width: 30px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .rev-p1 {
+    color: #ffffff;
+  }
+  .star-icon1 {
+    color: gold;
+  }
+  .loc-sal-bg1 {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-family: 'Roboto';
+  }
+  .ls-bg21 {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .loc-bg1 {
+    margin-right: 10px;
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .i-bg1 {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .loc-icon1 {
+    color: #ffffff;
+    font-size: 20px;
+  }
+  .loc-p1 {
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 500;
+    margin-left: 10px;
+    align-self: center;
+    font-weight: 500;
+  }
+  .pak-p1 {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 500;
+  }
+  .pak-p12 {
+    color: #ffffff;
+    font-size: 30px;
+    font-weight: 500;
+  }
+  .des-p1 {
+    line-height: 2;
+    color: #f8fafc;
+    font-size: 20px;
+    font-weight: 400;
+  }
+  .notFound-bg1 {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .not-img1 {
+    height: 50%;
+    width: 60%;
+  }
+  .not-h1 {
+    color: #ffffff;
+    font-size: 30px;
+  }
+  .not-p1 {
+    color: #ffffff;
+    font-size: 11px;
+  }
+  .link-bg1 {
+    text-decoration: none;
+    border: none;
+  }
+  .hr-bg1 {
+    width: 100%;
+    color: #ffffff;
+    text-decoration: none;
+  }
+  .des-bg1 {
+    width: 100%;
+  }
+  .des-visit-bg {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .pak-bg {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .a-bg {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: #6366f1;
+    font-size: 22px;
+    text-decoration: none;
+    border: none;
+  }
+  .external {
+    align-self: center;
+    height: 20px;
+    width: 20px;
+    margin-left: 8px;
+  }
+  .skills-h {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 25px;
+  }
+  .skills-bg {
+    display: flex;
+    flex-direction: column;
+  }
+  .skill-ul {
+    margin-left: 0px;
+    padding-left: 0px;
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    flex-grow: 1;
+  }
+  .skill-li {
+    width: 50%;
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+  }
+  .skill-img {
+    height: 50px;
+    width: 50px;
+  }
+  .ski-p {
+    color: #ffffff;
+    font-size: 17px;
+    font-weight: 600;
+    margin-left: 10px;
+  }
+  .life-bg {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .life-p-bg {
+    width: 100%;
+    height: 100%;
+    margin-top: 0px;
+    padding-top: 0px;
+  }
+  .life-img-bg {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .life-img {
+    width: 100%;
+    height: 85%;
+    align-self: center;
+  }
+  .sim-heading {
+    margin-top: 40px;
+    color: #ffffff;
+    font-size: 35px;
+  }
+  .simJobs-ul-bg {
+    margin-left: 0px;
+    padding-left: 0px;
+    list-style-type: none;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    flex-grow: 1;
+  }
+  .simJobs-li {
+    background-color: #272727;
+    margin-right: 30px;
+    margin-bottom: 30px;
+    padding: 30px;
+    height: auto;
+    width: 100%;
+    border-radius: 15px;
+  }
+  .simPro-p {
+    line-height: 2;
+    color: #f8fafc;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .simPro-h {
+    color: #ffffff;
+    font-size: 25px;
+  }
+  .simPro-bg1 {
+    margin-top: 50px;
+  }
+  .role-heading12 {
+    color: #ffffff;
+    font-size: 25px;
+    font-weight: 600;
+  }
+  .com-img12 {
+    height: 63px;
+    width: 58px;
+    align-self: center;
+    margin-top: 15px;
+  }
+  .star-bg12 {
+    width: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  .star-icon12 {
+    height: 20px;
+    width: 20px;
+    color: gold;
+  }
+  .rev-p12 {
+    color: #ffffff;
+    font-size: 18px;
+    align-self: center;
+    margin-left: 8px;
+  }
+  .wid {
+    width: 65%;
+  }
+  .wid1 {
+    width: auto;
+  }
+  .fail-bg {
+    margin-top: 10px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Roboto';
+  }
+  .fail-img {
+    height: 40%;
+    width: 70%;
+  }
+  .fail-h {
+    color: #ffffff;
+    font-size: 20px;
+  }
+  .fail-p {
+    color: #f8fafc;
+    font-size: 15px;
+    font-weight: 400;
+  }
 }

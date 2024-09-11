@@ -219,8 +219,8 @@ class Jobs extends Component {
     ) : (
       <ul className="roles-ul-bg">
         {rolesList.map(e => (
-          <Link to={`/jobs/${e.id}`} className="link-bg">
-            <li className="role-li-bg" key={e.id}>
+          <Link to={`/jobs/${e.id}`} className="link-bg" key={e.id}>
+            <li className="role-li-bg">
               <div className="role-head-bg">
                 <img
                   src={e.companyLogoUrl}
@@ -245,13 +245,17 @@ class Jobs extends Component {
                     <div className="i-bg">
                       <MdLocationOn className="loc-icon" />
                     </div>
-                    <p className="loc-p">{e.location}</p>
+                    <div className="i-bg">
+                      <p className="loc-p">{e.location}</p>
+                    </div>
                   </div>
                   <div className="loc-bg">
                     <div className="i-bg">
                       <BsBriefcaseFill className="loc-icon" />
                     </div>
-                    <p className="loc-p">{e.employmentType}</p>
+                    <div className="i-bg">
+                      <p className="loc-p">{e.employmentType}</p>
+                    </div>
                   </div>
                 </div>
                 <p className="pak-p">{e.packagePerAnnum}</p>
@@ -309,6 +313,25 @@ class Jobs extends Component {
         <Header />
         <div className="job-bg">
           <div className="applicant-bg">
+            <div className="mb-search-bg">
+              <input
+                type="search"
+                className="searchInp"
+                value={searchInput}
+                placeholder="Search"
+                onChange={this.searchBtn}
+                onKeyDown={this.inpClick}
+              />
+              <button
+                type="button"
+                data-testid="searchButton"
+                className="icon-bg"
+                onClick={this.getDet}
+              >
+                {' '}
+                <BsSearch className="search-icon" />
+              </button>
+            </div>
             {this.renderProfileList()}
             <EmploymentSalaryRanges
               checkFun={this.checkFun}
