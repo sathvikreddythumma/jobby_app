@@ -259,6 +259,11 @@
   font-size: 20px;
   font-weight: 500;
 }
+.job-dec {
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 550;
+}
 .des-p {
   line-height: 2;
   color: #f1f5f9;
@@ -575,8 +580,13 @@
   }
   .pak-p {
     color: #ffffff;
-    font-size: 20px;
+    font-size: 17px;
     font-weight: 500;
+  }
+  .job-dec {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 550;
   }
   .des-p {
     line-height: 2;

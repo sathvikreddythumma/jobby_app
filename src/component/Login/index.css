@@ -10,7 +10,7 @@
 .login-card-bg {
   background-color: #272727;
   height: 55%;
-  width: 25%;
+  width: 450px;
   border-radius: 5px;
   display: flex;
   flex-direction: column;
@@ -73,6 +73,23 @@
 .err-bg {
   width: 90%;
   align-self: center;
+}
+@media screen and (min-width: 567px) and (max-width: 992px) {
+  .login-card-bg {
+    background-color: #272727;
+    height: 55%;
+    width: 400px;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 30px;
+  }
+  .logo-img {
+    height: 50px;
+    width: 150px;
+  }
 }
 @media screen and (max-width: 567px) {
   .login-bg {

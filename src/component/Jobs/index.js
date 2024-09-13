@@ -264,7 +264,7 @@ class Jobs extends Component {
                 <hr />
               </div>
               <div className="des-bg">
-                <h1 className="pak-p">Description</h1>
+                <h1 className="job-dec">Description</h1>
                 <p className="des-p">{e.jobDescription}</p>
               </div>
             </li>
